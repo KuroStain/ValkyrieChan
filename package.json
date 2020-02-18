@@ -1,0 +1,23 @@
+{
+  "name": "ValkyrieChan",
+  "version": "1.0.0",
+  "description": "Discord Bot, proyecto de aprendizaje y uso personal para servidor.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KuroStain/ValkyrieChan.git"
+  },
+  "keywords": [],
+  "author": "Camilo Guajardo (KuroStain)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KuroStain/ValkyrieChan/issues"
+  },
+  "homepage": "https://github.com/KuroStain/ValkyrieChan#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
