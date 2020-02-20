@@ -11,9 +11,9 @@ client.on("ready", () => {
 
 client.on("message", async message =>{
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    // console.log(args);
+    // console.log("Argumento: "+args);
     const comando = args.shift().toLowerCase();
-    console.log(comando);
+    // console.log("Comando: "+comando);
 
     if(!message.content.startsWith(prefix)) return;
     if(message.author.bot) return;
@@ -44,22 +44,48 @@ client.on("message", async message =>{
             message.channel.send(help);
 
             // Respuesta asolicitud
-            client.on("message", async message => {
-                switch (message.content.trim()){
-                    case "1":
-                        message.reply(" revisa tus DM. ヽ(✿ﾟ▽ﾟ)ノ");
-                        break;
-                    case "2":
-                        message.reply(" revisa tus DM. ヽ(✿ﾟ▽ﾟ)ノ");
-                        break;
-                    case "3":
-                        message.reply(" revisa tus DM. ヽ(✿ﾟ▽ﾟ)ノ");
-                        break;
-                    default:
-                        message.channel.send("No se ponga weon... si le estan dando las opciones, no es tan dificil mi niño. ~~Saco wea...~~");
-                        break;
-                }
+            
+            // client.on("message", message => {
+
+            //     let resp = message.content.trim();
+            //     console.log("La respuesta es: "+resp);
+
+            //     if(resp == 1){
+            //         message.reply(" revisa tus DM (1). ヽ(✿ﾟ▽ﾟ)ノ");
+            //     }else if (resp == 2){
+            //         message.reply(" revisa tus DM (2). ヽ(✿ﾟ▽ﾟ)ノ");
+            //     }else if (resp == 3){
+            //         message.reply(" revisa tus DM (3). ヽ(✿ﾟ▽ﾟ)ノ");
+            //     }
+
+            //     return;
+
+            //     switch (resp){
+            //         case "1":
+            //             message.reply(" revisa tus DM (1). ヽ(✿ﾟ▽ﾟ)ノ");
+            //             break;
+            //         case "2":
+            //             message.reply(" revisa tus DM. (2) ヽ(✿ﾟ▽ﾟ)ノ");
+            //             break;
+            //         case "3":
+            //             message.reply(" revisa tus DM. (3) ヽ(✿ﾟ▽ﾟ)ノ");
+            //             break;
+            //         default:
+            //             message.channel.send("No se ponga weon... si le estan dando las opciones, no es tan dificil mi niño. ~~Saco wea...~~");
+            //             break;
+            //     }
+            // })
+            // return;
+
+            // Metodo colector
+
+            const filter = m => m.content.includes('1', '2', '3') && m.author.id === message.author.id;
+            console.log("respuesta: "+filter);
+            message.channel.awaitMessages(filter, { maxMatches: 1, time: 30000, errors: ['time'] })
+            .then(collected => {
+                message.channel.send(`${collected.first().author} got the correct answer!`);
             })
+
 
     };
 });
